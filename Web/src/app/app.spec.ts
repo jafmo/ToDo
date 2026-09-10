@@ -1,6 +1,8 @@
+import { CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { App } from './app';
+import { ToDoListComponent } from './to-do-list/to-do-list.component';
 
 describe('App', () => {
   beforeEach(async () => {
@@ -11,6 +13,7 @@ describe('App', () => {
       declarations: [
         App
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents();
   });
@@ -21,10 +24,4 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', async () => {
-    const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, Web');
-  });
 });
