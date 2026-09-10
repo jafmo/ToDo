@@ -12,8 +12,8 @@ export class ToDoListService {
     return this.http.get<ToDoList[]>(this.apiUrl);
   }
 
-  AddTask (toDoList: ToDoList, task: Partial<Task>): Observable<ToDoList> {
-      const params = new HttpParams().set('id', toDoList.id.toString());
+  AddTask (id: number, task: Partial<Task>): Observable<ToDoList> {
+      const params = new HttpParams().set('id', id.toString());
       return this.http.post<ToDoList>(`${this.apiUrl}/addTask`, task, { params });
   }
 
@@ -22,8 +22,8 @@ export class ToDoListService {
     return this.http.delete<void>(`${this.apiUrl}/deleteTask`, { params });
   }
 
-  UpdateTask (toDoList: ToDoList, task: Partial<Task>): Observable<ToDoList> {
-      const params = new HttpParams().set('id', toDoList.id.toString());
+  UpdateTask (id: number, task: Partial<Task>): Observable<ToDoList> {
+      const params = new HttpParams().set('id', id.toString());
       return this.http.put<ToDoList>(`${this.apiUrl}/updateTask`, task, { params });
   }
 

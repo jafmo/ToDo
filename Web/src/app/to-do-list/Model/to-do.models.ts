@@ -8,7 +8,7 @@ export interface Task {
   id: number;
   name: string;
   description: string;
-  completed: boolean;
+  isCompleted: boolean;
 }
 export interface ToDoList {
   id: number;

@@ -1,0 +1,28 @@
+
+<div class="card p-2  mb-2 addContainer">
+  <form id="toDoListForm" [formGroup]="toDoListForm">
+    <div class="row col-sm-12">
+      <div class="col-sm-3">
+        <input type="text" formControlName="name"
+               [ngClass]="{ 'is-invalid': submitted() && toDoListForm.get('name')?.errors }" />
+        <div *ngIf="submitted() && toDoListForm.get('name')?.errors" class="invalid-feedback">
+          <div *ngIf="toDoListForm.get('name')?.errors?.['required']">Name is required.</div>
+          <div *ngIf="toDoListForm.get('name')?.errors?.['maxlength']">Name is 100 characters max.</div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <input type="text" formControlName="description" />
+      </div>
+      <div class="col-sm-2">
+        <input type="checkbox" formControlName="isCompleted"
+               [ngClass]="{ 'is-invalid': submitted() && toDoListForm.get('isCompleted')?.errors }" />
+        <div *ngIf="submitted() && toDoListForm.get('isCompleted')?.errors" class="invalid-feedback">
+          <div *ngIf="toDoListForm.get('isCompleted')?.errors?.['required']">IsCompleted is required.</div>
+        </div>
+      </div>
+      <div class="col-sm-1"><input type="button" class="btn btn-primary btn-sm" value="Save" (click)="onSave()" /></div>
+      <div class="col-sm-1"><input type="button" class="btn btn-primary btn-sm" value="Cancel" (click)="onCancel()" /></div>
+    </div>
+  </form>
+</div>
+

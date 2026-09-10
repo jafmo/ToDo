@@ -17,7 +17,7 @@
                 <div class="row col-sm-12 card p-2 mb-4">
                     <div class="row col-sm-12">
                       <div class="col-sm-10 card-title">
-                        <span><strong>For user : </strong>{{ toDoListItem.user.name }}</span>
+                        <user [currentUser]="toDoListItem.user"></user>
                       </div>
                       <div class="col-sm-2">
                         <input type="button" class="btn btn-success" value="Add" (click)="onAdd(toDoListItem)" />
@@ -27,53 +27,18 @@
                       <div>
                         <div class="row col-sm-12">
                           <span class="row col-sm-12 mb-2">
-                            <strong class="col-sm-3">Item</strong>
+                            <strong class="col-sm-3">Task</strong>
                             <strong class="col-sm-4">Description</strong>
                             <strong class="col-sm-2">Completed</strong>
                             <strong class="col-sm-2"></strong>
                           </span>
                         </div>
-
                         @if (newTask().toDoListId === toDoListItem.id) {
-                        <div class="card p-2  mb-2 addContainer">
-                          <form id="toDoListForm" [formGroup]="toDoListForm">
-                            <div class="row col-sm-12">
-                              <div class="col-sm-3">
-                                <input type="text" formControlName="name"
-                                       [ngClass]="{ 'is-invalid': submitted() && toDoListForm.get('name')?.errors }" />
-                                <div *ngIf="submitted() && toDoListForm.get('name')?.errors" class="invalid-feedback">
-                                  <div *ngIf="toDoListForm.get('name')?.errors?.['required']">Name is required.</div>
-                                  <div *ngIf="toDoListForm.get('name')?.errors?.['maxlength']">Name is 100 characters max.</div>
-                                </div>
-                              </div>
-                              <div class="col-sm-4">
-                                <input type="text" formControlName="description" />
-                              </div>
-                              <div class="col-sm-2">
-                                <input type="checkbox" formControlName="completed"
-                                       [ngClass]="{ 'is-invalid': submitted() && toDoListForm.get('completed')?.errors }" />
-                                <div *ngIf="submitted() && toDoListForm.get('completed')?.errors" class="invalid-feedback">
-                                  <div *ngIf="toDoListForm.get('completed')?.errors?.['required']">Completed is required.</div>
-                                </div>
-                              </div>
-                              <div class="col-sm-1"><input type="button" class="btn btn-primary btn-sm" value="Save" (click)="onSave(toDoListItem)" /></div>
-                              <div class="col-sm-1"><input type="button" class="btn btn-primary btn-sm" value="Cancel" (click)="onCancel()" /></div>
-                            </div>
-                          </form>
-                        </div>
+                          <add-edit-task mode="add" [task]="newTask()" (cancelTriggered)="onCancel()" (saveTriggered)="onSave($event)"></ add-edit-task>
                         }
-                        @for (item of toDoListItem.tasks; track item.id) {
+                        @for (task of toDoListItem.tasks; track task.id) {
                         <div class="row col-sm-12 mb-2">
-                          <div class="row col-sm-12">
-                            <span class="col-sm-3">{{ item.name }}</span>
-                            <span class="col-sm-4">{{ item.description }}</span>
-                            <span class="col-sm-2">{{ item.completed ? "Yes" : "No" }}</span>
-                            <span class="col-sm-1">
-                              <!--<input type="button" class="btn btn-primary" value="Edit" (click)="onEdit(item)" />-->
-                            </span>
-                              <span class="col-sm-1"><input type="button" class="btn btn-danger" value="Delete" (click)="onDelete(item)" />
-                            </span>
-</div>
+                          <task [task]="task" (deleteTriggered)="onDelete($event)"></task>
                         </div>
                         }
                       </div>

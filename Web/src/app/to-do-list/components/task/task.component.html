@@ -1,0 +1,11 @@
+<div class="row col-sm-12">
+  <span class="col-sm-3">{{ task().name }}</span>
+  <span class="col-sm-4">{{ task().description }}</span>
+  <span class="col-sm-2">{{ task().isCompleted ? "Yes" : "No" }}</span>
+  <span class="col-sm-1">
+    <!--<input type="button" class="btn btn-primary" value="Edit" (click)="onEdit(task)" />-->
+  </span>
+  <span class="col-sm-1">
+    <input type="button" class="btn btn-danger" value="Delete" (click)="onDelete(task())" />
+  </span>
+</div>

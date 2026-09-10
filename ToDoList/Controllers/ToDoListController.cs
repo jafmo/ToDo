@@ -44,7 +44,7 @@ namespace API.Controllers
         // POST task
         [HttpPost]
         [Route("addTask")]
-        public async Task<ToDoList> AddTask(int id, [FromBody] Core.ToDoListDomain.Model.ToDoTask task)
+        public async Task<ToDoList> AddTask(int id, [FromBody] ToDoTask task)
         {
             return await _toDoListService.AddTask(id, task);
         }
@@ -59,7 +59,7 @@ namespace API.Controllers
         // PUT task
         [HttpPut("{id}")]
         [Route("updateTask")]
-        public async Task Put(int id, [FromBody] Core.ToDoListDomain.Model.ToDoTask task)
+        public async Task Put(int id, [FromBody] ToDoTask task)
         {
             await _toDoListService.UpdateTask(id, task);
         }
