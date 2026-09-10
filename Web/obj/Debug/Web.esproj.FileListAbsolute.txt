@@ -1,0 +1,1 @@
+C:\projects\ToDoList\Web\obj\Debug\Web.esproj.CoreCompileInputs.cache

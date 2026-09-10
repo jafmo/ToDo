@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="../unitTests/unitTests.csproj" Id="173b0eb9-227e-4c96-9e5c-3330099e39d3" />
+  <Project Path="../Web/Web.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="API.csproj" />
+</Solution>

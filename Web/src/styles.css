@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+.center {
+  text-align: center;
+}
+
+.list-container,
+.form-container {
+  margin: 10px auto;
+  padding: 20px;
+  width: 1024px;
+}
